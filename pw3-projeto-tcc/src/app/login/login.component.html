@@ -1,14 +1,32 @@
 <div id="login">
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
     <label for="user">Usuário: </label>
     <br>
     <input id="user" type="text" formControlName="user">
     <br>
+
+    @if (loginForm.get('user')?.touched && loginForm.get('user')?.invalid) {
+      <div>
+        @if (loginForm.get('user')?.errors?.['required']) {
+          <small>Nome é obrigatório!</small>
+        }
+      </div>
+    }
+
     <br>
     <label for="passwd">Senha: </label>
     <br>
     <input type="password" id="passwd" formControlName="passwd">
     <br>
+
+    @if (loginForm.get('passwd')?.touched && loginForm.get('passwd')?.invalid) {
+      <div>
+        @if (loginForm.get('passwd')?.errors?.['required']) {
+          <small>Senha é obrigatória!</small>
+        }
+      </div>
+    }
+
     <button type="button" (click)="OnLogin()">Entrar</button>
   </form>
 </div>

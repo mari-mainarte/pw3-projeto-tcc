@@ -1,0 +1,7 @@
+#contatos{
+  display: flex;
+  gap: 60px;
+  flex-direction: row;
+  align-items: center;
+
+}

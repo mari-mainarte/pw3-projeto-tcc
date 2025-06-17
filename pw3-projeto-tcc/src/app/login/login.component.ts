@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +9,22 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  username = "Mariana&Paola"
-  senha = "saiforaentrosa"
+  username = "m&p";
+  senha = "123456";
 
   constructor(private fb: FormBuilder){
     this.loginForm = this.fb.group({
-      user : this.fb.control(''),
-      passwd : this.fb.control('')
+      user : ['', [Validators.required]],
+      passwd : ['', [Validators.required]]
     });
+  }
+
+  submit() {
+    if (this.loginForm.valid) {
+      alert('Formulário válido');
+    } else {
+      alert('Formulário inválido');
+    }
   }
 
   OnLogin(){
@@ -24,9 +32,9 @@ export class LoginComponent {
     let passwdInput = this.loginForm.get('passwd')?.value
 
     if (userInput == this.username && passwdInput == this.senha){
-      alert("Bem-vindo!")
+      alert("Bem-vindo " + this.username + "!")
     }else{
-      alert("ENTROSAAAAA")
+      alert("Usuário ou senha inválidos!")
     }
   }
 }

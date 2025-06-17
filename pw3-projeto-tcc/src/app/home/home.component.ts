@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { FuncionalidadeComponent } from "../funcionalidade/funcionalidade.component";
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [FuncionalidadeComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
