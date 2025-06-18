@@ -1,1 +1,40 @@
-<p>funcionalidade works!</p>
+<h1>Usuários do SIME</h1>
+
+<div id="usuarios">
+    @for(item of usuarios; track item.nome){
+        <div id="usuario">
+            <h3>{{item.nome}}</h3>
+            <h4>E-mail: {{item.email}}</h4>
+            <h4>RM: {{item.rm}}</h4>
+            <h4>Telefone: {{item.telefone}}</h4>
+            <h4>Chamados abertos: {{item.chamadosAbertos}}</h4>
+            <h4>Chamados concluidos: {{item.chamadosConcluidos}}</h4>
+            <h4>Senha: {{item.senha}}</h4>
+        </div>
+    }
+</div>
+
+@if(criarBtn){
+    <div id="formCadastroUser">
+        <form [formGroup]="cadastroForm" (ngSubmit)="submit()">
+            <p for="nome">Nome:</p>
+            <input type="text" id="nomeInput" formControlName="nome">
+            <p for="email">E-mail:</p>
+            <input type="email" id="emailInput" formControlName="email">
+            <p for="rm">RM:</p>
+            <input type="number" id="rmInput" formControlName="rm">
+            <p for="telefone">Telefone:</p>
+            <input type="text" id="telefoneInput" formControlName="telefone">
+            <p for="chamadosAbertos">Chamados Abertos</p>
+            <input type="number" id="chamadosAbertosInput" formControlName="chamadosAbertos">
+            <p for="chamadosConcluidos">Chamados Concluidos</p>
+            <input type="number" id="chamadosConcluidosInput" formControlName="chamadosConcluidos">
+            <p for="senha">Senha:</p>
+            <input type="password" id="senhaInput" formControlName="senha">
+            <br>
+        </form>
+        <button id="CadastrarUserBtn" (click)="OnCadastrar()">Cadastrar</button>
+    </div>
+}
+
+<button id="criarUserBtn" (click)="criarUser()">Criar usuário</button>

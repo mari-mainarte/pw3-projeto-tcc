@@ -3,5 +3,8 @@
   gap: 60px;
   flex-direction: row;
   align-items: center;
-
+  background-color: #44A1A0;
+  color: white;
+  font-family: arial;
+  padding-left: 30px;
 }
