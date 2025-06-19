@@ -19,21 +19,84 @@
         <form [formGroup]="cadastroForm" (ngSubmit)="submit()">
             <p for="nome">Nome:</p>
             <input type="text" id="nomeInput" formControlName="nome">
+            
+            @if(cadastroForm.get('nome')?.touched && cadastroForm.get('nome')?.invalid){
+                <div>
+                  @if (cadastroForm.get('nome')?.errors?.['required']) {
+                    <small>Nome é obrigatório!!</small>
+                  }
+                </div>
+            }
+
             <p for="email">E-mail:</p>
             <input type="email" id="emailInput" formControlName="email">
+            
+            @if(cadastroForm.get('email')?.touched && cadastroForm.get('email')?.invalid){
+                <div>
+                  @if (cadastroForm.get('email')?.errors?.['required']) {
+                    <small>E-mail é obrigatório!!</small>
+                  }
+                </div>
+            }
+
             <p for="rm">RM:</p>
             <input type="number" id="rmInput" formControlName="rm">
+
+            @if(cadastroForm.get('rm')?.touched && cadastroForm.get('rm')?.invalid){
+                <div>
+                  @if (cadastroForm.get('rm')?.errors?.['required']) {
+                    <small>RM é obrigatório!!</small>
+                  }
+                </div>
+            }
+
             <p for="telefone">Telefone:</p>
             <input type="text" id="telefoneInput" formControlName="telefone">
-            <p for="chamadosAbertos">Chamados Abertos</p>
+
+            @if(cadastroForm.get('telefone')?.touched && cadastroForm.get('telefone')?.invalid){
+                <div>
+                  @if (cadastroForm.get('telefone')?.errors?.['required']) {
+                    <small>Telefone é obrigatório!!</small>
+                  }
+                </div>
+            }
+
+            <p for="chamadosAbertos">Chamados abertos</p>
             <input type="number" id="chamadosAbertosInput" formControlName="chamadosAbertos">
-            <p for="chamadosConcluidos">Chamados Concluidos</p>
+            
+            @if(cadastroForm.get('chamadosAbertos')?.touched && cadastroForm.get('chamadosAbertos')?.invalid){
+                <div>
+                  @if (cadastroForm.get('chamadosAbertos')?.errors?.['required']) {
+                    <small>Chamados abertos é obrigatório!!</small>
+                  }
+                </div>
+            }
+            
+            <p for="chamadosConcluidos">Chamados concluídos</p>
             <input type="number" id="chamadosConcluidosInput" formControlName="chamadosConcluidos">
+            
+            @if(cadastroForm.get('chamadosConcluidos')?.touched && cadastroForm.get('chamadosConcluidos')?.invalid){
+                <div>
+                  @if (cadastroForm.get('chamadosConcluidos')?.errors?.['required']) {
+                    <small>Chamados concluídos é obrigatório!!</small>
+                  }
+                </div>
+            }
+            
             <p for="senha">Senha:</p>
             <input type="password" id="senhaInput" formControlName="senha">
+
+            @if(cadastroForm.get('senha')?.touched && cadastroForm.get('senha')?.invalid){
+                <div>
+                  @if (cadastroForm.get('senha')?.errors?.['required']) {
+                    <small>Senha é obrigatório!!</small>
+                  }
+                </div>
+            }
+
             <br>
         </form>
-        <button id="CadastrarUserBtn" (click)="OnCadastrar()">Cadastrar</button>
+        <button type="submit" id="cadastrarUserBtn" (click)="OnCadastrar()">Cadastrar</button>
     </div>
 }
 

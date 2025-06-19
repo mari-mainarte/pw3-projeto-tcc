@@ -55,12 +55,20 @@ export class FuncionalidadeComponent {
     this.chamadosAbertos = this.cadastroForm.get('chamadosAbertos')?.value;
     this.chamadosConcluidos = this.cadastroForm.get('chamadosConcluidos')?.value;
     this.senha = this.cadastroForm.get('senha')?.value;
-    this.usuarios.push(
-      {"nome": this.nome, "email": this.email, "rm": this.rm, 
-        "telefone": this.telefone, "chamadosAbertos": this.chamadosAbertos, 
-        "chamadosConcluidos": this.chamadosConcluidos, "senha": this.senha
-      }
-    )
+
+    const camposValidos = [this.nome, this.email, this.telefone, this.senha].every(v => v && v.trim() != '') 
+     && this.rm != 0 && this.chamadosAbertos != 0 && this.chamadosConcluidos != 0;
+
+    if(camposValidos){
+      this.usuarios.push(
+        {"nome": this.nome, "email": this.email, "rm": this.rm, 
+          "telefone": this.telefone, "chamadosAbertos": this.chamadosAbertos, 
+          "chamadosConcluidos": this.chamadosConcluidos, "senha": this.senha
+        }
+      )
+    }else{
+      alert("Todos os campos devem ser preenchidos!");
+    }
   }
 
 }
