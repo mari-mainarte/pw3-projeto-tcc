@@ -10,13 +10,15 @@
             <h4>Chamados abertos: {{item.chamadosAbertos}}</h4>
             <h4>Chamados concluidos: {{item.chamadosConcluidos}}</h4>
             <h4>Senha: {{item.senha}}</h4>
+            <h4>Tipo perfil: {{item.tipoPerfil}}</h4>
+            <button id="editarUserBtn" (click)="editarUser(item.nome, item.email, item.rm, item.telefone, item.chamadosAbertos, item.chamadosConcluidos, item.senha, item.tipoPerfil)">Editar usuário</button>
         </div>
     }
 </div>
 
 @if(criarBtn){
     <div id="formCadastroUser">
-        <form [formGroup]="cadastroForm" (ngSubmit)="submit()">
+        <form [formGroup]="cadastroForm" (ngSubmit)="submitCadastro()">
             <p for="nome">Nome:</p>
             <input type="text" id="nomeInput" formControlName="nome">
             
@@ -40,7 +42,7 @@
             }
 
             <p for="rm">RM:</p>
-            <input type="number" id="rmInput" formControlName="rm">
+            <input type="text" id="rmInput" formControlName="rm">
 
             @if(cadastroForm.get('rm')?.touched && cadastroForm.get('rm')?.invalid){
                 <div>
@@ -62,7 +64,7 @@
             }
 
             <p for="chamadosAbertos">Chamados abertos</p>
-            <input type="number" id="chamadosAbertosInput" formControlName="chamadosAbertos">
+            <input type="text" id="chamadosAbertosInput" formControlName="chamadosAbertos">
             
             @if(cadastroForm.get('chamadosAbertos')?.touched && cadastroForm.get('chamadosAbertos')?.invalid){
                 <div>
@@ -73,7 +75,7 @@
             }
             
             <p for="chamadosConcluidos">Chamados concluídos</p>
-            <input type="number" id="chamadosConcluidosInput" formControlName="chamadosConcluidos">
+            <input type="text" id="chamadosConcluidosInput" formControlName="chamadosConcluidos">
             
             @if(cadastroForm.get('chamadosConcluidos')?.touched && cadastroForm.get('chamadosConcluidos')?.invalid){
                 <div>
@@ -94,10 +96,53 @@
                 </div>
             }
 
+            <p for="tipoPerfil">Tipo perfil: </p>
+            <input type="text" id="tipoPerfilInput" formControlName="tipoPerfil">
+
+            @if(cadastroForm.get('tipoPerfil')?.touched && cadastroForm.get('tipoPerfil')?.invalid){
+                <div>
+                  @if (cadastroForm.get('tipoPerfil')?.errors?.['required']) {
+                    <small>Senha é obrigatório!!</small>
+                  }
+                </div>
+            }
             <br>
         </form>
         <button type="submit" id="cadastrarUserBtn" (click)="OnCadastrar()">Cadastrar</button>
     </div>
 }
 
+@if(editarBtn){
+  <div>
+    <div id="formEditarUser">
+          <form [formGroup]="editarForm" (ngSubmit)="submitEditar()">
+              <p for="nome">Nome:</p>
+              <input type="text" id="nomeInput" formControlName="nome">
+              
+              <p for="email">E-mail:</p>
+              <input type="email" id="emailInput" formControlName="email">
+            
+              <p for="rm">RM:</p>
+              <input type="text" id="rmInput" formControlName="rm">
+
+              <p for="telefone">Telefone:</p>
+              <input type="text" id="telefoneInput" formControlName="telefone">
+
+              <p for="chamadosAbertos">Chamados abertos</p>
+              <input type="tex" id="chamadosAbertosInput" formControlName="chamadosAbertos">
+                
+              <p for="chamadosConcluidos">Chamados concluídos</p>
+              <input type="text" id="chamadosConcluidosInput" formControlName="chamadosConcluidos">
+                
+              <p for="senha">Senha:</p>
+              <input type="password" id="senhaInput" formControlName="senha">
+
+              <p for="tipoPerfil">Tipo perfil: </p>
+              <input type="text" id="tipoPerfilInput" formControlName="tipoPerfil">
+              <br>
+          </form>
+          <button type="submit" id="editaRUserBtn" (click)="OnEditar()">Editar</button>
+      </div>
+  </div>
+}
 <button id="criarUserBtn" (click)="criarUser()">Criar usuário</button>

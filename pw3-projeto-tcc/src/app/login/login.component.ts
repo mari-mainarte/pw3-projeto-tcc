@@ -28,17 +28,13 @@ export class LoginComponent {
       alert('Formulário inválido');
     }
   }
-
-  logar() {
-    this.router.navigate(['/home']);
-  }
-
+  
   OnLogin(){
     let userInput = this.loginForm.get('user')?.value;
     let passwdInput = this.loginForm.get('passwd')?.value
 
     if(userInput == this.username && passwdInput == this.senha){
-      this.logar();
+      this.router.navigate(['/home']);
     }else{
       alert("Usuário ou senha inválidos!")
     }
