@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#login{
+    display: flex;
+    justify-content: center; /* Centraliza na horizontal */
+    align-items: center;     /* Centraliza na vertical */
+    height: 100vh;   
+    margin-right: 50px;   
+}
+form{
+    margin: 0;
+    background-color: #44A1A0;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+input{
+    width: 180px;
+    height: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #e6f4f3;
+}
+#btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    margin-top: 25px;
+    width: 90px;
+    height: 25px;
+    border-radius: 10px;
+}
+label{
+    font-size: 20px;
+    color: white;
+    font-family: "Inter", sans-serif;
+}
+small{
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
